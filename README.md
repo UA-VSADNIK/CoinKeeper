@@ -1,7 +1,8 @@
 
   # CoinKeeper
 
-  This is a code bundle for CoinKeeper. The original project is available at https://www.figma.com/design/AO9WIYQaBtBBcuOE4YZAx2/CoinKeeper.
+  ## 🎨 Дизайн проєкту
+Весь макет і UI-kit доступні у Figma: https://www.figma.com/design/AO9WIYQaBtBBcuOE4YZAx2/CoinKeeper
 
   ## Running the code
 
