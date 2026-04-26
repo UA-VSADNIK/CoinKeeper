@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>CoinKeeper - Зворотний зв'язок</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
+                <span>CoinKeeper</span>
+            </div>
+            <nav>
+                <div class="nav-item" onclick="location.href='index.html'">Головна</div>
+                <div class="nav-item" onclick="location.href='expenses.html'">Мої витрати</div>
+                <div class="nav-item" onclick="location.href='analytics.html'">Аналітика</div>
+                <div class="nav-item" onclick="location.href='family.html'">Сім'я</div>
+                <div class="nav-item active">Зворотний зв'язок</div>
+                <div class="nav-item" onclick="location.href='settings.html'">Налаштування</div>
+            </nav>
+            <div class="logout" onclick="logoutUser()">Вийти</div>
+        </aside>
+
+        <main class="main-content">
+            <h1>Зворотний зв'язок</h1>
+
+            <div class="card feedback-card">
+                <div class="feedback-header">
+                    <h3>Напишіть нам</h3>
+                </div>
+
+                <form id="feedbackForm">
+                    <div class="input-group">
+                        <label>Тема повідомлення</label>
+                        <select id="subject">
+                            <option>Оберіть тему</option>
+                            <option>Помилка в роботі</option>
+                            <option>Пропозиція щодо покращення</option>
+                            <option>Питання</option>
+                            <option>Інше</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Текст повідомлення</label>
+                        <textarea id="message" placeholder="Опишіть детально вашу проблему або пропозицію..."></textarea>
+                    </div>
+
+                    <button type="button" class="btn-action btn-send" onclick="sendFeedback()">
+                        Надіслати
+                    </button>
+                </form>
+
+                <div class="demo-footer">
+                    Це демонстраційна версія
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function sendFeedback() {
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            if (subject === "Оберіть тему" || message.trim() === "") {
+                alert("Будь ласка, заповніть всі поля!");
+                return;
+            }
+
+            alert("Дякуємо! Ваше повідомлення надіслано.");
+            document.getElementById('feedbackForm').reset();
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

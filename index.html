@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>CoinKeeper - Головна</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
+                <span>CoinKeeper</span>
+            </div>
+            <nav>
+                <div class="nav-item active">Головна</div>
+                <div class="nav-item" onclick="location.href='expenses.html'">Мої витрати</div>
+                <div class="nav-item" onclick="location.href='analytics.html'">Аналітика</div>
+                <div class="nav-item" onclick="location.href='family.html'">Сім'я</div>
+                <div class="nav-item" onclick="location.href='feedback.html'">Зворотний зв'язок</div>
+                <div class="nav-item" onclick="location.href='settings.html'">Налаштування</div>
+            </nav>
+            <div class="logout" onclick="logoutUser()">Вийти</div>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-row">
+                <div class="card balance-card">
+                    <p>Загальний баланс</p>
+                    <h1>15420.50 ₴</h1>
+                    <button class="btn-action btn-large" onclick="topUpBalance()">+ Поповнити баланс</button>.
+                </div>
+                <div class="card limit-card">
+                    <div class="limit-header">
+                        <p>Витрачено за місяць</p>
+                        <span class="limit-val">88%</span>
+                    </div>
+                    <h1>5280.30 ₴</h1>
+                    <p class="limit-info">Ліміт: 6000.00 ₴</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 88%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="middle-row">
+                <div class="card form-section">
+                    <h3>Швидке додавання витрати</h3>
+                    <div class="input-group">
+                        <label>Категорія</label>
+                        <select id="cat-select">
+                            <option>Виберіть категорію</option>
+                            <option>Їжа</option>
+                            <option>Транспорт</option>
+                            <option>Розваги</option>
+                            <option>Здоров'я</option>
+                            <option>Інше</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Сума (₴)</label>
+                        <input type="number" id="sum-input" placeholder="0.00">
+                    </div>
+                    <div class="input-group">
+                        <label>Дата</label>
+                        <input type="date" id="date-input" value="2026-04-20">
+                    </div>
+                    <div class="input-group">
+                        <label>Опис</label>
+                        <input type="text" id="desc-input" placeholder="Наприклад: Обід у ресторані">
+                    </div>
+                    <button class="btn-submit" onclick="addTransaction()">+ Додати</button>
+                </div>
+
+                <div class="card chart-section">
+                    <h3>Розподіл витрат за категоріями</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="mainPieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card table-section">
+    <h3>Останні транзакції</h3>
+    <table id="trans-table">
+        <thead>
+            <tr>
+                <th>Дата</th>
+                <th>Категорія</th>
+                <th>Опис</th>
+                <th class="text-right">Сума</th>
+                <th class="text-center">Дія</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <div id="topup-modal" class="modal-overlay">
+    <div class="modal-card">
+        <div class="modal-header">
+            <h3>Поповнення балансу</h3>
+            <span class="close-modal" onclick="closeTopUpModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>Введіть суму, на яку хочете поповнити рахунок:</p>
+            <div class="input-group">
+                <input type="number" id="modal-amount-input" placeholder="0.00" step="0.01">
+            </div>
+            <button class="btn-submit" style="margin-top: 10px;" onclick="confirmTopUp()">Підтвердити поповнення</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

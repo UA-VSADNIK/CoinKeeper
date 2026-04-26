@@ -1,0 +1,790 @@
+/* Основні налаштування */
+:root {
+    --primary-bg: #f4f7f6;
+    --sidebar-dark: #222e54;
+    --teal: #4c929e;
+    --rose: #ce6a6c;
+    --green-light: #bed3c4;
+
+    --orange-light: #dd978e;
+    --white: #ffffff;
+    --text-main: #2d3436;
+    --bg-color: #f8fafd;
+    --text-dark: #333;
+    
+    /* Нові темні кольори для тексту в картках (за твоїм запитом) */
+    --card-green-bg: #bed3c4;
+    --card-green-text: #293d2f; /* Темно-зелений */
+    
+    --card-peach-bg: #e9b3a3;
+    --card-peach-text: #29110a; /* Темно-персиковий */
+}
+
+body { 
+    margin: 0; 
+    font-family: 'Inter', sans-serif; 
+    background: var(--bg-color); 
+    color: var(--text-dark); }
+
+.app-wrapper { display: flex; height: 100vh; }
+
+/* Бокове меню*/
+.sidebar {
+    width: 280px;
+    background: var(--sidebar-dark);
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .logo { font-size: 28px; font-weight: 800; margin-bottom: 40px; padding-left: 15px; } */
+
+.logo { 
+    font-size: 24px; /* Трохи зменшив, щоб все влізло в рядок */
+    font-weight: 800; 
+    margin-bottom: 40px; 
+    padding-left: 15px;
+    
+    /* Додаємо Flexbox для вирівнювання */
+    display: flex;
+    align-items: center; /* Центрування по вертикалі */
+    gap: 12px;           /* Відстань між картинкою та текстом */
+    color: white;
+}
+
+/* Налаштування самого зображення логотипу */
+.logo-img {
+    width: 65px;         /* Підбери зручний розмір */
+    height: 65px;
+    object-fit: contain; /* Щоб лого не деформувалося */
+    border-radius: 8px;  /* Якщо хочеш м'які кути для картинки */
+}
+
+
+
+
+
+.nav-item {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+}
+/* Змінюємо колір великої цифри суми */
+.summary-card-clean h1 {
+    color: #ce6a6c !important; /* Встанови свій HEX-код тут */
+}
+
+.filter-section h3 {
+    color: #4c929e; /* Твій фірмовий колір Teal */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nav-item:hover { background: rgba(255,255,255,0.05); }
+.nav-item.active { background: var(--teal); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+
+.logout { margin-top: auto; padding: 20px; color: #ff7675; cursor: pointer; font-weight: bold; }
+
+/* Контентна область */
+.main-content { flex: 1; padding: 40px; overflow-y: auto; }
+
+.card { background: var(--white); border-radius: 20px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); margin-bottom: 30px; }
+
+/* Верхні кольорові картки */
+.top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+.card-balance { background: var(--green-light); border: none; }
+.card-limit { background: var(--orange-light); border: none; }
+
+.card p { margin: 0; font-size: 14px; font-weight: 600; opacity: 0.7; }
+.card h1 { margin: 15px 0; font-size: 36px; font-weight: 700; }
+
+.btn-action {
+    background: var(--teal);
+    color: white; border: none;
+    padding: 12px 24px; border-radius: 10px;
+    font-weight: 600; cursor: pointer;
+}
+
+/* Прогрес-бар ліміту */
+.progress-container { background: rgba(0,0,0,0.1); border-radius: 20px; height: 10px; margin: 20px 0; position: relative; }
+.progress-bar { 
+    /* //background: var(--teal); height: 100%; border-radius: 20px; transition: width 0.5s ease;  */
+    background-color: #4c929e;
+}
+
+.balance-card { 
+    background-color: var(--card-green-bg) !important; 
+    color: var(--card-green-text); }
+.limit-card { 
+    background-color: var(--card-peach-bg) !important; 
+    color: var(--card-peach-text); }
+
+
+.limit-info { font-weight: normal; font-size: 13px; opacity: 0.9; margin-top: 5px; }
+
+.expenses-page-title { margin: 0 0 25px 0; font-size: 28px; font-weight: 700; color: var(--sidebar-color); }
+.expenses-summary-card { border: none !important; padding: 20px !important; }
+
+
+.filter-card { padding: 20px; }
+.filter-card h3 { margin-top: 0; margin-bottom: 20px; }
+.filter-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 15px; }
+.filter-row:last-child { margin-bottom: 0; }
+.filter-card .input-group { margin: 0; }
+.filter-card label { margin-bottom: 5px; }
+
+/* Велика кнопка під балансом */
+.btn-large {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    width: auto; /* Щоб не була на всю ширину */
+    background-color: #4c929e;
+    border-radius: 10px;
+}
+
+/* Контейнер для графіка, щоб він був меншим */
+.chart-wrapper {
+    /* width: 250px; /* Обмежуємо розмір як на дизайні */
+    /*margin: 0 auto;
+    padding: 20px; */
+    width: 380px; /* Збільшуємо ширину */
+    margin: 0 auto;
+    padding: 10px; /* Можна зменшити відступи, щоб було більше місця для самого кола */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Форма та Графік */
+.middle-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+.input-group { margin-bottom: 20px; flex: 1;}
+.input-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 13px; }
+
+input, select {
+    width: 100%;
+    border: 1.5px solid #edf2f7;
+    border-radius: 12px;
+    background: #fbfcfd;
+    padding: 14px; 
+    font-size: 14px;
+    box-sizing: border-box; /* Щоб падінги не розпирали ширину */
+}
+.btn-submit {
+    background: var(--teal); color: white; border: none; width: 100%;
+    padding: 16px; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px;
+}
+
+/* Таблиця */
+.table-section h3 { margin-bottom: 25px; font-size: 20px; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; color: #a0aec0; font-size: 13px; padding: 15px; border-bottom: 2px solid #f7fafc; }
+td { padding: 20px 15px; border-bottom: 1px solid #f7fafc; font-size: 15px; }
+.sum-minus { color: var(--rose); font-weight: 700; text-align: right; }
+.delete-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #cbd5e0;
+    transition: 0.2s;
+}
+.delete-icon:hover { color: #ce6a6c; }
+
+/* Вирівнювання в таблицях */
+table th, table td {
+    text-align: left; /* Всі значення по лівому краю за замовчуванням */
+    padding: 15px;
+    border-bottom: 1px solid #f7fafc;
+    white-space: nowrap; /* Запобігає переносу тексту */
+}
+
+/* Сума та Дія — строго по центру */
+table th:nth-child(4), table td:nth-child(4),
+table th:nth-child(5), table td:nth-child(5) {
+    text-align: center;
+}
+
+/* Контейнер для кнопок видалення, щоб ширина була фіксованою */
+.action-cell-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80px; /* Фіксована ширина, щоб нічого не з'їжджало */
+    height: 30px;
+    margin: 0 auto;
+}
+/* Стилі для сторінки логіну */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f7f6;
+    margin: 0;
+}
+/* Контейнер фільтрів */
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Відстань між рядами */
+    margin-top: 15px;
+}
+
+/* Ряд з двома полями */
+.filter-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Рівно дві колонки */
+    gap: 30px; /* Відстань між лівим і правим полем */
+}
+
+/* Заголовок фільтрів */
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--sidebar-dark);
+    margin-bottom: 20px;
+}
+
+
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    color: #a0aec0;
+    font-size: 14px;
+}
+
+/* Контейнер для кнопок, щоб вони були поряд на початку */
+.filter-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px; /* Відстань між кнопками */
+    justify-content: flex-start; /* Вирівнювання по лівому краю */
+}
+
+/* Спільний стиль для обох кнопок: спочатку білі з обводкою */
+.btn-filter-action, 
+.btn-outline-reset {
+    width: 210px; /* Однакова ширина */
+    height: 48px;
+    background-color: #ffffff; /* Білий фон на початку */
+    border: 2px solid var(--teal); /* Контур */
+    color: var(--teal); /* Колір тексту */
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Плавний перехід */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ефект при наведенні (Hover) — стають трохи помітнішими */
+.btn-filter-action:hover, 
+.btn-outline-reset:hover {
+    background-color: rgba(76, 146, 158, 0.05); /* Легкий відтінок при наведенні */
+}
+
+/* Ефект при натисканні (Active) — стають повністю зафарбованими */
+.btn-filter-action:active, 
+.btn-outline-reset:active {
+    background-color: var(--teal); /* Зафарбовується повністю */
+    color: #ffffff; /* Текст стає білим */
+    transform: scale(0.96); /* Легкий ефект вдавлювання */
+}
+
+/* Опціонально: якщо хочеш, щоб кнопка залишалася темною після кліку, поки дані вантажаться */
+.btn-filter-action:focus {
+    background-color: var(--teal);
+    color: #ffffff;
+}
+
+.filter-grid-container {
+    display: grid;
+    /* Створюємо дві рівні колонки */
+    grid-template-columns: 1fr 1fr; 
+    /* Горизонтальна відстань між датами/сумами (як на малюнку) */
+    column-gap: 40px; 
+    /* Вертикальна відстань між рядами */
+    row-gap: 20px; 
+    margin-top: 10px;
+}
+/* Стилі для написів (Label) */
+.filter-section .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0; /* Відступи тепер регулює сітка (row-gap) */
+}
+.filter-section label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4c929e;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.input-with-icon input {
+    padding-left: 45px !important;
+}
+
+/* Стилізація самих інпутів для чистого вигляду */
+.filter-section input, 
+.filter-section select {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
+    padding: 0 15px;
+    background: #fbfcfd;
+    box-sizing: border-box;
+}
+
+/* Кнопка скидання */
+.btn-outline-reset {
+    margin-top: 25px;
+    padding: 10px 20px;
+    border: 1.5px solid #4c929e;
+    color: #4c929e;
+    background: transparent;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-outline-reset:hover {
+    background: rgba(76, 146, 158, 0.05);
+}
+
+/* Контейнер логотипу на сторінці входу */
+/*  */
+/* Сторінка логіну - фон на весь екран */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #87bcc5;
+    margin: 0;
+}
+
+/* Біла картка по центру */
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 400px; /* Обмежуємо ширину картки */
+    text-align: center;
+}
+
+/* Контейнер для лого та тексту в один ряд */
+.login-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.login-logo-img {
+    width: 45px;
+    height: auto;
+}
+
+.login-card h1 {
+    margin: 0;
+    font-size: 28px;
+    color: var(--sidebar-dark);
+}
+
+.subtitle {
+    color: #888;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* Щоб форми не "стрибали" */
+.auth-form.hidden {
+    display: none;
+}
+.btn-main {
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    width: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--teal);
+    border: 1.5px solid var(--teal);
+    padding: 14px;
+    border-radius: 12px;
+    width: 100%;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.btn-main:hover { background: #3d7a85; }
+.btn-outline:hover { background: rgba(76, 146, 158, 0.05); }
+
+.login-card .input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.summary-card {
+    border-left: 10px solid var(--rose);
+}
+
+.summary-card h1 {
+    color: var(--rose);
+    margin: 10px 0;
+}
+
+.btn-outline {
+    background: white;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+
+/* Кнопки періодів */
+.analytics-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+.btn-group, .btn-group-toggle { display: flex; gap: 10px; }
+
+.btn-tab, .btn-toggle {
+    padding: 10px 18px; border: 1px solid #edf2f7; background: #fbfcfd;
+    border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 14px;
+    transition: 0.2s; color: #718096;
+}
+.btn-tab:hover, .btn-toggle:hover { background: #edf2f7; }
+.btn-tab.active, .btn-toggle.active { background: var(--teal); color: white; border-color: var(--teal); box-shadow: 0 4px 10px rgba(76, 146, 158, 0.2); }
+
+
+.delete-confirm-row {
+    display: flex;
+    gap: 5px;
+}
+.btn-confirm-yes { background: var(--rose); color: white; border: none; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: bold; }
+.btn-confirm-no { background: #e2e8f0; color: #333; border: none; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+
+
+/* Фільтри-чіпси */
+.category-chips input[type="checkbox"] {
+    accent-color: var(--teal); /* Тепер галочки синьо-зелені */
+    width: 16px; height: 16px; transform: translateY(2px);
+}
+
+.category-row-container {
+    accent-color: #3b4f91;
+    display: flex;
+    flex-wrap: wrap; /* Щоб на малих екранах переносились */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+
+.chip {
+    flex: 0 1 auto; /* Чіпси займають лише необхідне місце */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.chip input { margin: 0; }
+.chip.teal { background: #e6f2f2; color: #4c929e; }
+.chip.rose { background: #fceaea; color: #ce6a6c; }
+.chip.orange { background: #fdf2ee; color: #e9b3a3; }
+.chip.green { background: #f0f5f2; color: #bed3c4; }
+.chip.dark { background: #e9ecf1; color: #222e54; }
+
+/* Топ-3 блоки знизу */
+.top-categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.top-chip { padding: 25px; border-radius: 20px; border: 1.5px solid rgba(0,0,0,0.03); position: relative; }
+.chip-num { position: absolute; top: 15px; left: 20px; font-size: 12px; color: #888; }
+.top-chip p { margin: 15px 0 5px 0; font-weight: bold; font-size: 16px; }
+.top-chip h2 { margin: 0; font-size: 24px; }
+
+.teal-light { background: #f0f7f7; border-left: 5px solid #4c929e; }
+.orange-light { background: #fef8f6; border-left: 5px solid #e9b3a3; }
+.rose-light { background: #fff5f5; border-left: 5px solid #ce6a6c; }
+
+.chart-container-big { height: 400px; width: 100%; margin-top: 20px; }
+
+
+/* Сім'я: Поле запрошення */
+.invite-input-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.hint-text {
+    font-size: 10px;
+    color: #a0aec0;
+    margin-top: 15px;
+}
+
+/* Картка члена сім'ї */
+.member-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border: 1px solid #edf2f7;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    transition: 0.2s;
+}
+
+.member-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Аватари */
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+.avatar.teal { background-color: #4c929e; }
+.avatar.gray { background-color: #bed3c4; }
+
+.member-name { font-weight: 600; margin: 0; }
+.member-email { font-size: 13px; color: #718096; margin: 2px 0 0 0; }
+
+/* Статуси (Badges) */
+.badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.badge.owner { background: #f0f7f7; color: #4c929e; }
+.badge.guest { background: #f7fafc; color: #718096; border: 1px solid #edf2f7; }
+
+/* Футер демо-версії */
+.demo-footer {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #222e54;
+    margin-top: 25px;
+}
+
+
+
+/* Стилі для сторінки зворотного зв'язку */
+.feedback-card {
+    max-width: 600px; /* Обмежуємо ширину як на макеті */
+    margin-top: 20px;
+}
+
+.feedback-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    color: var(--sidebar-dark);
+}
+
+.feedback-header .icon {
+    font-size: 20px;
+}
+
+.feedback-card label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: block;
+    color: var(--sidebar-dark);
+}
+
+.feedback-card textarea {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    border: 1.5px solid #edf2f7;
+    border-radius: 12px;
+    background: #fbfcfd;
+    font-family: inherit;
+    font-size: 14px;
+    resize: none; /* Забороняємо змінювати розмір вручну */
+    box-sizing: border-box;
+}
+
+.btn-send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 14px 30px;
+}
+
+/* Стилі для налаштувань */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: var(--sidebar-dark);
+}
+
+.section-header h3 { margin: 0; font-size: 18px; }
+
+.settings-section .input-group { margin-bottom: 15px; }
+
+.toggle-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.toggle-group p { font-size: 14px; font-weight: 500; margin: 0; }
+
+/* Дизайн перемикача (Switch) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; width: 16px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--teal); }
+input:checked + .slider:before { transform: translateX(22px); }
+
+.btn-save {
+    margin-top: 10px;
+    padding: 15px 35px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Фон модального вікна */
+.modal-overlay {
+    display: none; /* Приховано за замовчуванням */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(34, 46, 84, 0.6); /* Темний фон із прозорістю */
+    backdrop-filter: blur(8px); /* Розмиття контенту позаду */
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Картка модального вікна */
+.modal-card {
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    animation: modalShow 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 { margin: 0; color: var(--sidebar-dark); }
+
+.close-modal {
+    font-size: 30px;
+    cursor: pointer;
+    color: #cbd5e0;
+    line-height: 1;
+}
+
+.close-modal:hover { color: var(--rose); }
+
+/* Анімація появи */
+@keyframes modalShow {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+

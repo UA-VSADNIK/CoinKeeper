@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>CoinKeeper - Мої витрати</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
+                <span>CoinKeeper</span>
+            </div>
+             <nav>
+                <div class="nav-item" onclick="location.href='index.html'">Головна</div>
+                <div class="nav-item active">Мої витрати</div>
+                <div class="nav-item" onclick="location.href='analytics.html'">Аналітика</div>
+                <div class="nav-item" onclick="location.href='family.html'">Сім'я</div>
+                <div class="nav-item" onclick="location.href='feedback.html'">Зворотний зв'язок</div>
+                <div class="nav-item" onclick="location.href='settings.html'">Налаштування</div>
+            </nav>
+            <div class="logout" onclick="logoutUser()">Вийти</div>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="page-title">Мої витрати</h1>
+
+            <div class="card summary-card-clean">
+                <p>Загальна сума</p>
+                <h1 id="total-expenses-sum">0.00 ₴</h1>
+                <small id="transaction-count">Знайдено транзакцій: 0</small>
+            </div>
+
+            <div class="card filter-section">
+    <div class="filter-header">
+        <h3>Фільтри</h3>
+    </div>
+    
+    <div class="filter-grid-container">
+        <div class="input-group">
+            <label>Пошук</label>
+                <input type="text" id="filter-search" placeholder="Шукати за описом...">
+        </div>
+        <div class="input-group">
+            <label>Категорія</label>
+            <select id="filter-category">
+                <option value="all">Всі категорії</option>
+                <option value="Їжа">Їжа</option>
+                <option value="Транспорт">Транспорт</option>
+                <option value="Розваги">Розваги</option>
+                <option value="Здоров'я">Здоров'я</option>
+                <option value="Житло">Житло</option>
+                <option value="Дохід">Дохід</option>
+                <option value="Інше">Інше</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Дата від</label>
+            <input type="date" id="filter-date-from">
+        </div>
+        <div class="input-group">
+            <label>Дата до</label>
+            <input type="date" id="filter-date-to">
+        </div>
+
+        <div class="input-group">
+            <label>Мінімальна сума (₴)</label>
+            <input type="number" id="filter-sum-min" placeholder="0.00">
+        </div>
+        <div class="input-group">
+            <label>Максимальна сума (₴)</label>
+            <input type="number" id="filter-sum-max" placeholder="999 999">
+        </div>
+    </div>
+
+   <div class="filter-actions">
+    <button class="btn-filter-action" onclick="applyFilters()">Застосувати фільтри</button>
+    <button class="btn-filter-action" onclick="resetFilters()">Скинути фільтри</button>
+</div>
+</div>
+
+
+            <div class="card table-section">
+                <h3>Транзакції</h3>
+                <table id="full-trans-table">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Категорія</th>
+                            <th>Опис</th>
+                            <th class="text-center">Сума</th>
+                            <th class="text-center">Дія</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

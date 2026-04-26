@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>CoinKeeper - Аналітика</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
+                <span>CoinKeeper</span>
+            </div>
+            <nav>
+                <div class="nav-item" onclick="location.href='index.html'">Головна</div>
+                <div class="nav-item" onclick="location.href='expenses.html'">Мої витрати</div>
+                <div class="nav-item active" >Аналітика</div>
+                <div class="nav-item" onclick="location.href='family.html'">Сім'я</div>
+                <div class="nav-item" onclick="location.href='feedback.html'">Зворотний зв'язок</div>
+                <div class="nav-item" onclick="location.href='settings.html'">Налаштування</div>
+            </nav>
+            <div class="logout" onclick="logoutUser()">Вийти</div>
+        </aside>
+
+<main class="main-content">
+    <h1>Аналітика</h1>
+    <div class="card analytics-header">
+        <h3>Період аналізу</h3>
+        <div class="analytics-controls">
+            <div class="period-btn-group" id="period-selector">
+                <button class="btn-tab active" data-period="week">1 Тиждень</button>
+                <button class="btn-tab" data-period="3month">3 міс</button>
+                <button class="btn-tab" data-period="6month">6 міс</button>
+                <button class="btn-tab" data-period="year">12 міс</button>
+                <button class="btn-tab">Вибраний період</button>
+            </div>
+            <div class="chart-toggle-group" id="type-selector">
+                <button class="btn-toggle active" data-type="bar">Стовпці</button>
+                <button class="btn-toggle" data-type="line">Лінії</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card category-filter-card">
+        <h3>Фільтр категорій</h3>
+        <div class="category-row-container">
+    <div class="chip teal">
+        <input type="checkbox" checked data-idx="0"> Їжа
+    </div>
+    <div class="chip rose">
+        <input type="checkbox" checked data-idx="1"> Транспорт
+    </div>
+    <div class="chip orange">
+        <input type="checkbox" checked data-idx="2"> Розваги
+    </div>
+    <div class="chip green">
+        <input type="checkbox" checked data-idx="3"> Здоров'я
+    </div>
+    <div class="chip dark">
+        <input type="checkbox" checked data-idx="4"> Інше
+    </div>
+</div>
+    </div>
+
+    <div class="card chart-main-card">
+        <h3>Тренд витрат</h3>
+        <div class="chart-container-big">
+            <canvas id="trendChart"></canvas>
+        </div>
+    </div>
+</main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

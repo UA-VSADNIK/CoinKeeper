@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinKeeper - Вхід</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+    <div class="login-card">
+        <div class="login-logo-container">
+            <img src="CoinKeeper1.png" alt="CoinKeeper Logo" class="login-logo-img">
+            <h1>CoinKeeper</h1>
+        </div>
+        
+        <p class="subtitle">Управління фінансами</p>
+
+        <form id="loginForm" class="auth-form">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="loginEmail" placeholder="your@email.com" required>
+            </div>
+            <div class="input-group">
+                <label>Пароль</label>
+                <input type="password" id="loginPass" placeholder="********" required>
+            </div>
+            <button type="button" class="btn-main" onclick="fakeLogin()">Увійти</button>
+            <button type="button" class="btn-outline" onclick="toggleAuth()">Створити акаунт</button>
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+        <form id="registerForm" class="auth-form hidden">
+            <div class="input-group">
+                <label>ПІБ</label>
+                <input type="text" placeholder="Іванов Іван Іванович">
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="your@email.com">
+            </div>
+            <div class="input-group">
+                <label>Пароль</label>
+                <input type="password" placeholder="********">
+            </div>
+            <div class="input-group">
+                <label>Валюта</label>
+                <select>
+                    <option value="UAH">₴ Гривня (UAH)</option>
+                    <option value="USD">$ Долар (USD)</option>
+                    <option value="EUR">€ Євро (EUR)</option>
+                </select>
+            </div>
+            <button type="button" class="btn-main" onclick="fakeLogin()">Зареєструватися</button>
+            <button type="button" class="btn-outline" onclick="toggleAuth()">Вже є акаунт?</button>
+        </form>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
