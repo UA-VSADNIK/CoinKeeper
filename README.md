@@ -3,7 +3,7 @@
 Вебзастосунок для зручного контролю витрат та доходів із візуалізацією аналітики
 
 ## Наша команда "LAVAgroup"
-- **Поліна** — PM + Frontend
+- **Поліна** — PM + Design + Frontend
 - **Ліля** — QA Engineer
 - **Влад** — Developer
 - **Андрій** — Business analyst
