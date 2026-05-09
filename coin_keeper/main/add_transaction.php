@@ -1,0 +1,53 @@
+<?php
+session_start();
+
+require '../db.php';
+require '../auth/auth_check.php';
+
+$user_id = $_SESSION['user_id'];
+
+// 1. Завантаження даних з форми
+$category = trim($_POST['category']);
+$amount = $_POST['amount'];
+$type = $_POST['type'];
+$date = $_POST['date'];
+$desc = $_POST['description'];
+
+// 2. Перевірка даних з форми
+if (!$category || !$amount || !$type || !$date) {
+    exit("Невірні дані");
+}
+
+// 3. Якщо тип транзакції витрата — перевіряємо баланс
+if ($type === 'expense') {
+    $sql = "SELECT 
+        SUM(CASE WHEN type='income' THEN amount ELSE 0 END) -
+        SUM(CASE WHEN type='expense' THEN amount ELSE 0 END) AS balance
+        FROM transactions WHERE user_id = ?";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $res = $stmt->get_result()->fetch_assoc();
+
+    $balance = $res['balance'] ?? 0;
+
+    if ($amount > $balance) {
+        echo "Недостатньо коштів! Баланс: " . number_format($balance, 2) . " ₴";
+        exit();
+    }
+}
+
+// 4. Додаємо транзакцію у БД
+$sql = "INSERT INTO transactions 
+(user_id, category, amount, type, description, transaction_date)
+VALUES (?, ?, ?, ?, ?, ?)";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("isdsss", $user_id, $category, $amount, $type, $desc, $date);
+
+if ($stmt->execute()) {
+    echo "OK";
+} else {
+    echo "Помилка";
+}
