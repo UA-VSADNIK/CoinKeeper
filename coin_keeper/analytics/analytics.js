@@ -33,12 +33,12 @@ const periodConfig = {
 // 2.3. Кольори категорій
 // Примітка: можна змінити кольори
 const categoryColors = {
-    food: '#FF9800',
-    transport: '#2196F3',
-    housing: '#795548',
-    entertainment: '#9C27B0',
-    health: '#E91E63',
-    other: '#607D8B'
+    food: '#5b6b8f',
+    transport: '#4c929e',
+    housing: '#e9b3a3',
+    entertainment: '#ce6a6c',
+    health: '#bed3c4',
+    other: '#222e54'
 };
 
 // 2.4. Українські назви для категорій

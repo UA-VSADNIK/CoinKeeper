@@ -4,27 +4,27 @@ $categories = [
     // 1.1. Витрати
     'food' => [
         'name' => "Їжа",
-        'color' => "#FF9800"
+        'color' => "#5b6b8f"
     ],
     'transport' => [
         'name' => "Транспорт",
-        'color' => "#2196F3"
+        'color' => "#4c929e"
     ],
     'housing' => [
         'name' => "Житло",
-        'color' => "#795548"
+        'color' => "#e9b3a3"
     ],
     'entertainment' => [
         'name' => "Розваги",
-        'color' => "#9C27B0"
+        'color' => "#ce6a6c"
     ],
     'health' => [
         'name' => "Здоров'я",
-        'color' => "#E91E63"
+        'color' => "#bed3c4"
     ],
     'other' => [
         'name' => "Інше",
-        'color' => "#607D8B"
+        'color' => "#222e54"
     ],
     // 1.2. Дохід
     'income' => [
@@ -89,15 +89,16 @@ while ($row = $result->fetch_assoc()) {
 <body>
     <div class="app-wrapper">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="../CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
-                <span>CoinKeeper</span>
+            <a href="../main/index.php" class="logo-link">
+                <div class="logo">
+                    <img src="../CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
+                    <span>CoinKeeper</span>
             </div>
-            <nav>
+            </a>            <nav>
                 <div class="nav-item" onclick="location.href='../main/index.php'">Головна</div>
                 <div class="nav-item" onclick="location.href='../expenses/expenses.php'">Мої витрати</div>
-                <div class="nav-item active" >Аналітика</div>
-                <div class="nav-item">Сім'я</div>
+                <div class="nav-item active">Аналітика</div>
+                <div class="nav-item" onclick="location.href='../additional/family.html'">Сім'я</div>
                 <div class="nav-item" onclick="location.href='../feedback/feedback.html'">Зворотний зв'язок</div>
                 <div class="nav-item" onclick="location.href='../settings/settings.php'">Налаштування</div>
             </nav>
@@ -125,22 +126,22 @@ while ($row = $result->fetch_assoc()) {
             <div class="card category-filter-card">
                 <h3>Фільтр категорій</h3>
                 <div class="category-row-container">
-                    <div class="chip teal">
-                        <input type="checkbox" checked data-category="food">Їжа
+                    <div class="chip blue">
+                        <input type="checkbox" checked data-category="food"> Їжа
                     </div>
-                    <div class="chip rose">
+                    <div class="chip teal">
                         <input type="checkbox" checked data-category="transport">Транспорт
                     </div>
                     <div class="chip orange">
                         <input type="checkbox" checked data-category="housing">Житло
                     </div>
-                    <div class="chip green">
+                    <div class="chip rose">
                         <input type="checkbox" checked data-category="entertainment">Розваги
                     </div>
-                    <div class="chip dark">
+                    <div class="chip green">
                         <input type="checkbox" checked data-category="health"> Здоров'я
                     </div>
-                    <div class="chip">
+                    <div class="chip dark">
                         <input type="checkbox" checked data-category="other"> Інше
                     </div>
                 </div>

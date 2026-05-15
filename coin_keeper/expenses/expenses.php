@@ -4,27 +4,27 @@ $categories = [
     // 1.1. Витрати
     'food' => [
         'name' => "Їжа",
-        'color' => "#FF9800"
+        'color' => "#5b6b8f"
     ],
     'transport' => [
         'name' => "Транспорт",
-        'color' => "#2196F3"
+        'color' => "#4c929e"
     ],
     'housing' => [
         'name' => "Житло",
-        'color' => "#795548"
+        'color' => "#e9b3a3"
     ],
     'entertainment' => [
         'name' => "Розваги",
-        'color' => "#9C27B0"
+        'color' => "#ce6a6c"
     ],
     'health' => [
         'name' => "Здоров'я",
-        'color' => "#E91E63"
+        'color' => "#bed3c4"
     ],
     'other' => [
         'name' => "Інше",
-        'color' => "#607D8B"
+        'color' => "#222e54"
     ],
     // 1.2. Дохід
     'income' => [
@@ -152,31 +152,60 @@ $total = $totalResult['total'] ?? 0;
 <body>
     <div class="app-wrapper">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="../CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
-                <span>CoinKeeper</span>
+            <a href="../main/index.php" class="logo-link">
+                <div class="logo">
+                    <img src="../CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
+                    <span>CoinKeeper</span>
             </div>
+            </a>
              <nav>
                 <div class="nav-item" onclick="location.href='../main/index.php'">Головна</div>
                 <div class="nav-item active">Мої витрати</div>
                 <div class="nav-item" onclick="location.href='../analytics/analytics.php'">Аналітика</div>
-                <div class="nav-item">Сім'я</div>
+                <div class="nav-item" onclick="location.href='../additional/family.html'">Сім'я</div>
                 <div class="nav-item" onclick="location.href='../feedback/feedback.html'">Зворотний зв'язок</div>
                 <div class="nav-item" onclick="location.href='../settings/settings.php'">Налаштування</div>
             </nav>
             <div class="logout" onclick="logoutUser()">Вийти</div>
         </aside>
 
+
+
+
         <main class="main-content">
             <h1 class="page-title">Мої витрати</h1>
+
+
+
+
+
             <div class="card summary-card-clean">
-                <p>Загальна сума</p>
-                <h1 id="total-expenses-sum"><?= number_format($total, 2, '.', '') ?> ₴</h1>
-                <small id="transaction-count">
-                    Кількість транзакцій: <?= $transactionCount ?>.<br>
-                    Кількість витрат: <?= $expenseCount ?>.
-                </small>
+    <div class="summary-body">
+        
+        <div class="summary-col">
+            <p class="summary-label">Загальна сума</p>
+            <h1 id="total-expenses-sum"><?= number_format($total, 2, '.', '') ?> ₴</h1>
+        </div>
+
+        <div class="summary-col">
+            <p class="summary-label">Загальна кількість</p>
+            <div class="summary-stats">
+                <span>Транзакцій: <?= $transactionCount ?></span>
+                <span>Витрат: <?= $expenseCount ?></span>
             </div>
+        </div>
+
+    </div>
+</div>
+
+            
+
+
+
+
+
+
+
             <div class="card filter-section">
                 <div class="filter-header">
                     <h3>Фільтри</h3>
@@ -235,7 +264,7 @@ $total = $totalResult['total'] ?? 0;
                 </form>   
                 <div class="card table-section">
                     <div class="table-header">
-                        <h3 id="table-title">Витрати</h3>
+                        <h3 id="table-title">Витрати</h3>               
                         <button id="show-all-btn" class="btn-action"
                             onclick="showAllTransactions()">Показати всі транзакції</button>
                         <button id="hide-all-btn" class="btn-action" style="display: none;"

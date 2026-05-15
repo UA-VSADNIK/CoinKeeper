@@ -52,15 +52,17 @@ $limit = $budget['limit_amount'] ?? 0;
 <body>
     <div class="app-wrapper">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="../CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
-                <span>CoinKeeper</span>
+            <a href="../main/index.php" class="logo-link">
+                <div class="logo">
+                    <img src="../CoinKeeper1.png" alt="CoinKeeper Logo" class="logo-img">
+                    <span>CoinKeeper</span>
             </div>
+            </a>
             <nav>
                 <div class="nav-item" onclick="location.href='../main/index.php'">Головна</div>
                 <div class="nav-item" onclick="location.href='../expenses/expenses.php'">Мої витрати</div>
                 <div class="nav-item" onclick="location.href='../analytics/analytics.php'">Аналітика</div>
-                <div class="nav-item" onclick="location.href='family.html'">Сім'я</div>
+                <div class="nav-item" onclick="location.href='../additional/family.html'">Сім'я</div>
                 <div class="nav-item" onclick="location.href='../feedback/feedback.html'">Зворотний зв'язок</div>
                 <div class="nav-item active">Налаштування</div>
             </nav>

@@ -1,30 +1,40 @@
 <?php
 // 1. Категорії транзакцій
+//Кольори проєкту:
+// Їжа: #5b6b8f
+// Транспорт: #4c929e
+// Житло: #e9b3a3
+// Розваги: #ce6a6c
+// Здоровя: #bed3c4
+// Інше: #222e54
+
+
+
 $categories = [
     // 1.1. Витрати
     'food' => [
         'name' => "Їжа",
-        'color' => "#FF9800"
+        'color' => "#5b6b8f"
     ],
     'transport' => [
         'name' => "Транспорт",
-        'color' => "#2196F3"
+        'color' => "#4c929e"
     ],
     'housing' => [
         'name' => "Житло",
-        'color' => "#795548"
+        'color' => "#e9b3a3"
     ],
     'entertainment' => [
         'name' => "Розваги",
-        'color' => "#9C27B0"
+        'color' => "#ce6a6c"
     ],
     'health' => [
         'name' => "Здоров'я",
-        'color' => "#E91E63"
+        'color' => "#bed3c4"
     ],
     'other' => [
         'name' => "Інше",
-        'color' => "#607D8B"
+        'color' => "#222e54"
     ],
     // 1.2. Дохід
     'income' => [
@@ -154,7 +164,7 @@ if ($budgetLimit > 0) {
                 <div class="nav-item active">Головна</div>
                 <div class="nav-item" onclick="location.href='../expenses/expenses.php'">Мої витрати</div>
                 <div class="nav-item" onclick="location.href='../analytics/analytics.php'">Аналітика</div>
-                <div class="nav-item">Сім'я</div>
+                <div class="nav-item" onclick="location.href='../additional/family.html'">Сім'я</div>
                 <div class="nav-item" onclick="location.href='../feedback/feedback.html'">Зворотний зв'язок</div>
                 <div class="nav-item" onclick="location.href='../settings/settings.php'">Налаштування</div>
             </nav>
@@ -171,17 +181,14 @@ if ($budgetLimit > 0) {
                 </div>
                 <div class="card limit-card">
                     <div class="limit-header">
-                        <p>Витрачено за місяць</p>
-                        <span class="limit-val"><?= round($progressPercent) ?>%</span>
+                        <p>Витрачено: <?= round($progressPercent) ?>% від встановленого ліміту (<?= number_format($budgetLimit, 2, '.', '') ?>₴)</p>
                     </div>
                     <h1><?= number_format($month_expense, 2, '.', '') ?> ₴</h1>
-                    <p class="limit-info">Ліміт: <?= number_format($budgetLimit, 2, '.', '') ?> ₴</p>
-                    <div class="progress-container">
-                        <div class="progress-bar" style="width: <?= $progressPercent ?>%"></div>
-                    </div>
                     <!-- НОВА КНОПКА -->
-                    <button class="btn-action btn-large" style="margin-top: 15px;" 
+                    <button class="btn-action btn-limit" style="margin-top: 15px;" 
                     onclick="openLimitModal()">+ Встановити ліміт</button>
+                    
+
                 </div>
             </div>
             
