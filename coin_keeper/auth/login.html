@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinKeeper - Вхід</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="login-page">
+    <div class="login-card">
+        <div class="login-logo-container">
+            <img src="../CoinKeeper1.png" alt="CoinKeeper Logo" class="login-logo-img">
+            <h1>CoinKeeper</h1>
+        </div>
+        
+        <p class="subtitle">Управління фінансами</p>
+
+        <form id="loginForm" action="login.php" method="POST" class="auth-form">
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" id="loginEmail" placeholder="your@email.com" required>
+            </div>
+            <div class="input-group">
+                <label>Пароль</label>
+                <input type="password" name="password" id="loginPass" placeholder="********" required>
+            </div>
+            <button type="submit" class="btn-main">Увійти</button>
+            <button type="button" class="btn-outline" onclick="toggleAuth()">Створити акаунт</button>
+        </form>
+        
+        
+        
+        <form id="registerForm" action="register.php" method="POST" class="auth-form hidden">
+            <div class="input-group">
+                <label>ПІБ</label>
+                <input type="text" name="name" placeholder="Шевченко Тарас Григорович" required>
+            </div>
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="input-group">
+                <label>Пароль</label>
+                <input type="password" name="password" placeholder="********" required>
+            </div>
+            <div class="input-group">
+                <label>Валюта</label>
+                <select name="currency">
+                    <option value="UAH">₴ Гривня (UAH)</option>
+                    <option value="USD">$ Долар (USD)</option>
+                    <option value="EUR">€ Євро (EUR)</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn-main">Зареєструватися</button>
+            
+            
+            <button type="button" class="btn-outline" onclick="toggleAuth()">Вже є акаунт?</button>
+        </form>
+    </div>
+<script>
+    function toggleAuth() {
+        document.getElementById('loginForm').classList.toggle('hidden')
+        document.getElementById('registerForm').classList.toggle('hidden');
+    }
+</script>
+</body>
+</html>
