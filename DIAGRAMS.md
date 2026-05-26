@@ -15,23 +15,3 @@ graph TD
     J --> L[Оновлення інтерфейсу: Таблиця + Графіки]
     L --> M([Кінець])
 ```
-```mermaid
-    sequenceDiagram
-    participant U as Користувач
-    participant H as Analytics.html (UI)
-    participant S as Script.js (Logic)
-    participant L as LocalStorage (Data)
-    participant C as Chart.js (Library)
-
-    U->>H: Натискає кнопку періоду (напр. 3 міс)
-    H->>S: Виклик initTrendChart('bar', '3month')
-    S->>S: Виклик getAnalyticsData('3month')
-    S->>L: Запит getExpenses()
-    L-->>S: Повертає масив транзакцій
-    S->>S: Фільтрація транзакцій за датами (останні 3 міс)
-    S->>S: Групування сум за категоріями та місяцями
-    S->>C: currentTrendChart.destroy() (якщо існував)
-    S->>C: new Chart(ctx, config) з новими даними
-    C-->>H: Малювання оновленого графіка
-    S->>H: Оновлення блоків ТОП-категорій
-```
