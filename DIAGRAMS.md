@@ -37,7 +37,8 @@ graph TD
 
     %% Кольори стрілок
     linkStyle default stroke:#4c929e,stroke-width:2px;
- 
+```
+```mermaid
 C4Container
     title Container Diagram - Personal Finance Tracker (CoinKeeper)
 
@@ -62,7 +63,8 @@ C4Container
     UpdateRelStyle(user, frontend, $lineColor="#4c929e", $textColor="#222e54")
     UpdateRelStyle(frontend, backend, $lineColor="#4c929e", $textColor="#222e54")
     UpdateRelStyle(backend, db, $lineColor="#ce6a6c", $textColor="#222e54")
-
+```
+```mermaid
 C4Context
     title System Context - Personal Finance Tracker (CoinKeeper)
 
