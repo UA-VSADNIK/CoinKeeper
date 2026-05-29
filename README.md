@@ -7,6 +7,7 @@
 - **Аполінарія** — PM + Design + Frontend
 - **Влад** — Developer
 - **Андрій** — Business analyst
+- **Михайло** — Reporting Manager
 
 ## Дизайн та палітра
 Весь макет і UI-kit доступні у Figma: https://www.figma.com/design/AO9WIYQaBtBBcuOE4YZAx2/CoinKeeper
