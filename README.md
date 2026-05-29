@@ -4,7 +4,7 @@
 
 ## Наша команда "LAVAgroup"
 - **Ліля** — QA Engineer
-- **Аполінарія** — PM + Design + Frontend
+- **Поліна** — PM + Design + Frontend
 - **Влад** — Developer
 - **Андрій** — Business analyst
 - **Михайло** — Reporting Manager
