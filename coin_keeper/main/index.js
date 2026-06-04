@@ -26,7 +26,12 @@ function addTransaction() {
     .then(res => {
         if (res === "OK") {
             location.reload();
-        } else {
+        } 
+        else if (res === "LIMIT_EXCEEDED") {
+            alert("Увага! Встановлений ліміт витрат перевищено.");
+            location.reload();
+        } 
+        else {
             alert(res); // покажемо помилку з PHP
         }
     });
@@ -48,7 +53,8 @@ function deleteTransaction(id) {
     .then(res => {
         if (res === "OK") {
             location.reload();
-        } else {
+        } 
+        else {
             alert(res);
         }
     });

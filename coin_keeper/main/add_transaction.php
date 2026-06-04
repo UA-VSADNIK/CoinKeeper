@@ -47,7 +47,39 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("isdsss", $user_id, $category, $amount, $type, $desc, $date);
 
 if ($stmt->execute()) {
+    
+    // Перевірка перевищення ліміту (витрати)
+    $sqlBudget = "SELECT limit_amount FROM budgets WHERE user_id = ?";
+
+    $stmtBudget = $conn->prepare($sqlBudget);
+    $stmtBudget->bind_param("i", $user_id);
+    $stmtBudget->execute();
+
+    $budget = $stmtBudget->get_result()->fetch_assoc();
+
+    if ($budget) {
+
+        $limit = $budget['limit_amount'];
+
+        $sqlSpent = "SELECT SUM(amount) AS total
+                     FROM transactions WHERE user_id = ?
+                     AND type='expense'
+                     AND YEAR(transaction_date)=YEAR(CURDATE())
+                     AND MONTH(transaction_date)=MONTH(CURDATE())";
+
+        $stmtSpent = $conn->prepare($sqlSpent);
+        $stmtSpent->bind_param("i", $user_id);
+        $stmtSpent->execute();
+
+        $spent = $stmtSpent->get_result()->fetch_assoc()['total'] ?? 0;
+
+        if ($spent > $limit) {
+            echo "LIMIT_EXCEEDED";
+            exit();
+        }
+    }
     echo "OK";
+
 } else {
-    echo "Помилка";
+    echo "ERROR";
 }

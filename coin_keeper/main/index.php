@@ -139,6 +139,17 @@ $progressPercent = 0;
 if ($budgetLimit > 0) {
     $progressPercent = min(100, ($month_expense / $budgetLimit) * 100);
 }
+
+// 6. Чи перевищено ліміт
+$isLimitExceeded = false;
+
+if ($budgetLimit > 0 && $month_expense > $budgetLimit) {
+    $isLimitExceeded = true;
+}
+
+// 7. Розрахунок значень для картки витрат
+$isExceeded =  $budgetLimit > 0 && $month_expense > $budgetLimit;
+$overLimit = $isExceeded ? $month_expense - $budgetLimit : 0;
 ?>
 
 
@@ -181,14 +192,26 @@ if ($budgetLimit > 0) {
                 </div>
                 <div class="card limit-card">
                     <div class="limit-header">
-                        <p>Витрачено: <?= round($progressPercent) ?>% від встановленого ліміту (<?= number_format($budgetLimit, 2, '.', '') ?>₴)</p>
+                        <p>Витрати та ліміт</p>
                     </div>
                     <h1><?= number_format($month_expense, 2, '.', '') ?> ₴</h1>
-                    <!-- НОВА КНОПКА -->
+                    <p>Ліміт: <?= number_format($budgetLimit, 2, '.', '') ?></p>
+                    <p>
+                        Витрачено: <?= number_format($month_expense, 2, '.', '') ?> ₴ 
+                        <?php if (!$isExceeded && $budgetLimit > 0): ?> 
+                            (<?= round($progressPercent) ?>%)
+                        <?php endif; ?>
+                    </p>
+                
+                    <!-- warning -->
+                    <?php if ($isExceeded): ?>
+                        <p class="limit-warning">Увага! Ліміт перевищено на <?= number_format($overLimit, 2, '.', '') ?> ₴ </p>
+                    <?php endif; ?>
+                   
+                    <!-- Кнопка для встановлення ліміту -->
                     <button class="btn-action btn-limit" style="margin-top: 15px;" 
                     onclick="openLimitModal()">+ Встановити ліміт</button>
                     
-
                 </div>
             </div>
             
